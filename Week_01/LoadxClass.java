@@ -23,17 +23,16 @@ public class LoadxClass extends ClassLoader {
     }
 
 
-
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         try {
             BufferedInputStream bis = new BufferedInputStream(new FileInputStream(dir));
             int len = bis.available();
-            byte [] bytes = new byte [len];
+            byte[] bytes = new byte[len];
 
             bis.read(bytes, 0, len);
 
-            byte [] b = new byte [len];
+            byte[] b = new byte[len];
             for (int i = 0; i < bytes.length; i++) {
                 b[i] = (byte) (255 - bytes[i]);
             }
